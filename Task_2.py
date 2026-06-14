@@ -1,0 +1,63 @@
+
+# TASK 2: Iris Dataset = DATA VISUALIZATION
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 1. Load Dataset
+df = pd.read_csv("Iris.csv")   # update path if needed
+
+# 2. Basic Info
+print("First 5 rows:")
+print(df.head())
+
+print("\nDataset Info:")
+print(df.info())
+
+print("\nStatistical Summary:")
+print(df.describe())
+
+# 3. BAR CHART - Species count
+
+
+plt.figure()
+df["Species"].value_counts().plot(kind="bar")
+plt.title("Count of Iris Species")
+plt.xlabel("Species")
+plt.ylabel("Count")
+plt.show()
+
+# 4. HISTOGRAM - Sepal Length distribution
+
+
+plt.figure()
+plt.hist(df["SepalLengthCm"], bins=15)
+plt.title("Distribution of Sepal Length")
+plt.xlabel("Sepal Length (Cm)")
+plt.ylabel("Frequency")
+plt.show()
+
+# 5. SCATTER PLOT - Sepal Length vs Petal Length
+
+plt.figure()
+plt.scatter(df["SepalLengthCm"], df["PetalLengthCm"])
+plt.title("Sepal Length vs Petal Length")
+plt.xlabel("Sepal Length (Cm)")
+plt.ylabel("Petal Length (Cm)")
+plt.show()
+
+# 6. FEATURE COMPARISON (PAIRPLOT)
+
+sns.pairplot(df, hue="Species")
+plt.show()
+
+
+print("\nKey Insights:")
+print("- Setosa has clearly smaller petals")
+print("- PetalLengthCm is best feature for classification")
+print("- Strong correlation between PetalLengthCm and PetalWidthCm")
+print("- Sepal features overlap more across species")
+
